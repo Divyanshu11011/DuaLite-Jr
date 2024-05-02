@@ -1,5 +1,5 @@
 # DuaLite-Jr: Figma Design to Code Generator
-![DuaLite-Jr Logo](https://freeimage.host/i/JgkNZxV)
+![DuaLite-Jr Logo](https://s12.gifyu.com/images/Saw3k.gif)
 
 
 DuaLite-Jr is a plugin for Figma that automatically converts your design components into HTML or Tailwind CSS code. This tool is designed to streamline the process of turning visual designs into usable code, making it a valuable resource for developers and designers alike.
