@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES5",                  // Target ES5 for better compatibility
+    "lib": ["DOM", "ES5", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,             // Reduce build time by skipping lib check
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ES6",                  // Use ES6 for modules
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,         // May not be necessary unless using a specific transpilation strategy
+    "noEmit": false,                  // Change to false to allow emitting JS files
+    "outDir": "./dist",               // Output directory for compiled JavaScript files
+    "jsx": "react-jsx"                // Keep as is if using JSX in your UI components
+  },
+  "include": [
+    "plugin-src/**/*",               // Ensure all your source files are included
+    "ui-src/**/*"                    // Include UI source if using TypeScript there
+  ],
+  "exclude": [
+    "node_modules",                 // Standard exclude
+    "**/*.spec.ts"                  // Exclude test files
+  ]
+}

@@ -1,0 +1,53 @@
+.App {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f8; /* Light grey background for the app */
+  border-radius: 8px; /* Rounded corners for the app background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 400px; /* Sets a max width for the app on larger screens */
+  margin: auto; /* Center aligning the app */
+}
+
+h1 {
+  color: #333;
+  text-align: center; /* Center the header text */
+}
+
+select, button, .code-output {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 2px solid #ccc; /* Adds a border to inputs and buttons */
+  border-radius: 4px; /* Rounded corners for inputs and buttons */
+}
+
+button {
+  background-color: #5c67f2; /* A pleasant blue */
+  color: white; /* White text on the buttons */
+  font-weight: bold;
+  border: none; /* Remove default border for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+  background-color: #434cdf; /* Darker shade of button color on hover */
+}
+
+.code-output {
+  height: 300px;
+  resize: none; /* Disables resizing the textarea */
+  background-color: #fff; /* White background for the textarea */
+  color: #333; /* Dark grey text color for better readability */
+  font-family: 'Courier New', Courier, monospace; /* Makes the text in textarea monospaced */
+}
+
+select {
+  cursor: pointer; /* Pointer cursor on hover for select */
+}
+
+/* Adding a subtle hover effect to select elements */
+select:hover {
+  background-color: #e9e9ff; /* Light blue background on hover */
+}
