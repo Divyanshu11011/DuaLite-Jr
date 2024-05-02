@@ -4,6 +4,11 @@
 
 DuaLite-Jr is a plugin for Figma that automatically converts your design components into HTML or Tailwind CSS code. This tool is designed to streamline the process of turning visual designs into usable code, making it a valuable resource for developers and designers alike.
 
+## Features
+
+- **Automatic Conversion**: Convert selected Figma frames and elements into clean HTML or Tailwind CSS.
+- **Flexible Output**: Choose between generating standard HTML or Tailwind CSS based on your project needs.
+
 ## Enhanced Features
 
 In addition to the basic functionality expected from a design-to-code tool, DuaLite-Jr includes these advanced features:
@@ -12,11 +17,7 @@ In addition to the basic functionality expected from a design-to-code tool, DuaL
 2) **Tailwind CSS Support**: (Bonus Task Done ✅) Generate Tailwind CSS directly from your designs.
 3) **Live Code Preview**: View your generated code live in a sandbox environment as you make changes in Figma.
 
-## Features
 
-- **Automatic Conversion**: Convert selected Figma frames and elements into clean HTML or Tailwind CSS.
-- **Flexible Output**: Choose between generating standard HTML or Tailwind CSS based on your project needs.
-- **Real-time Updates**: Instantly see the generated code as you adjust your design in Figma.
 
 ## Setup Instructions
 
