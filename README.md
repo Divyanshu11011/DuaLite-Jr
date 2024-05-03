@@ -49,10 +49,10 @@ Once the plugin is running, you can generate code by selecting a frame or elemen
 
 Successfully Generated Design To Code for the Assigned Figma Design File Using Both Vanilla CSS and Tailwind CSS !
 
-Test Case 1
+Test Case 1 (The GIF might take some time to load, so please take a look at it from the following link:  :- https://s9.gifyu.com/images/SaEAN.gif )
 
 ![Test Case 1](https://github.com/Divyanshu11011/DuaLite-Jr/blob/master/test-case-1.gif)
 
-Test Case 2
+Test Case 2 (The GIF might take some time to load, so please take a look at it from the following link:  :- https://s9.gifyu.com/images/SaEA3.gif )
 
 ![Test Case 2](https://github.com/Divyanshu11011/DuaLite-Jr/blob/master/TestCase-1.gif)
