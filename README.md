@@ -51,8 +51,8 @@ Successfully Generated Design To Code for the Assigned Figma Design File Using B
 
 Test Case 1
 
-![Test Case 1](https://github.com/Divyanshu11011/DuaLite-Jr/tree/master/public/test-case-1.gif)
+![Test Case 1](https://github.com/Divyanshu11011/DuaLite-Jr/blob/master/test-case-1.gif)
 
 Test Case 2
 
-![Test Case 2](https://github.com/Divyanshu11011/DuaLite-Jr/tree/master/public/TestCase-1.gif)
+![Test Case 2](https://github.com/Divyanshu11011/DuaLite-Jr/blob/master/TestCase-1.gif)
