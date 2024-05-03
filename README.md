@@ -48,3 +48,11 @@ Once the plugin is running, you can generate code by selecting a frame or elemen
 ### Passing Test Cases ✅🥂
 
 Successfully Generated Design To Code for the Assigned Figma Design File Using Both Vanilla CSS and Tailwind CSS !
+
+Test Case 1
+
+![Test Case 1](https://s9.gifyu.com/images/SaEAN.gif)
+
+Test Case 2
+
+![Test Case 2](https://s9.gifyu.com/images/SaEA3.gif)
