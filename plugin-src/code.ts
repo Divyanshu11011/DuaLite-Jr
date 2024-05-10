@@ -25,7 +25,7 @@ function convertNodeToCode(node: SceneNode, outputType: string): string {
     }
 
     let result = '';
-    const childrenCode = node.children ? node.children.map(child => convertNodeToCode(child as SceneNode, outputType)).join('') : '';
+    const childrenCode = node.type === 'FRAME' || node.type === 'GROUP' ? node.children.map(child => convertNodeToCode(child as SceneNode, outputType)).join('') : '';
     
     if (node.type === 'TEXT') {
         result = generateTextCode(node as TextNode, outputType);
@@ -60,17 +60,19 @@ function generateTextCode(node: TextNode, outputType: string): string {
     }
 }
 
-
 function extractTextStyles(node: TextNode): string {
-    let styles = `color: ${getColor(node.fills)}; font-size: ${node.fontSize}px; `;
-    styles += `font-family: '${node.fontName.family}', sans-serif; font-weight: ${node.fontName.style}; `;
+    let styles = `color: ${getColor(node.fills as ReadonlyArray<Paint>)}; font-size: ${String(node.fontSize)}px; `;
+
+    styles += `font-family: ${(node.fontName as FontName).family}, sans-serif; font-weight: ${(node.fontName as FontName).style}; `;
     styles += `text-align: ${node.textAlignHorizontal}; white-space: pre-wrap; `;
     if (node.textDecoration === 'UNDERLINE') {
         styles += 'text-decoration: underline; ';
     }
+    
+
     // Explicitly handle width and height for text blocks
     if ('width' in node && 'height' in node) {
-        styles += `width: ${node.width}px; height: ${node.height}px; `;
+        styles += `width: ${(node as { width: number }).width}px; height: ${(node as { height: number }).height}px; `;
     }
 
     // Apply absolute positioning if the parent is a FRAME with no auto-layout
@@ -90,10 +92,11 @@ function extractStyles(node: SceneNode): string {
         styles += `height: ${node.height}px; `;
     }
 
-    if ('fills' in node && node.fills.length > 0 && node.fills[0].type === 'SOLID') {
+    if ('fills' in node && Array.isArray(node.fills) && node.fills.length > 0 && node.fills[0].type === 'SOLID') {
         const fill = node.fills[0] as SolidPaint;
         styles += `background: rgba(${Math.round(fill.color.r * 255)}, ${Math.round(fill.color.g * 255)}, ${Math.round(fill.color.b * 255)}, ${fill.opacity || 1}); `;
     }
+    
 
     if (node.type !== 'TEXT' && node.parent && node.parent.type === 'FRAME' && node.parent.layoutMode === 'NONE') {
         styles += `position: absolute; left: ${node.x}px; top: ${node.y}px; `;
@@ -115,16 +118,26 @@ function extractStyles(node: SceneNode): string {
     return styles;
 }
 
-function getColor(fills: ReadonlyArray<Paint>): string {
-    if (fills.length > 0 && fills[0].type === 'SOLID') {
-        const fill = fills[0] as SolidPaint;
-        return `rgba(${Math.round(fill.color.r * 255)}, ${Math.round(fill.color.g * 255)}, ${Math.round(fill.color.b * 255)}, ${fill.opacity || 1})`;
+function getColor(fills: ReadonlyArray<Paint> | Readonly<Paint>): string {
+    if (Array.isArray(fills)) {
+        if (fills.length > 0 && fills[0].type === 'SOLID') {
+            const fill = fills[0] as SolidPaint;
+            return `rgba(${Math.round(fill.color.r * 255)}, ${Math.round(fill.color.g * 255)}, ${Math.round(fill.color.b * 255)}, ${fill.opacity || 1})`;
+        }
+    } else {
+        if ((fills as Paint).type === 'SOLID') {
+            const fill = fills as SolidPaint;
+            return `rgba(${Math.round(fill.color.r * 255)}, ${Math.round(fill.color.g * 255)}, ${Math.round(fill.color.b * 255)}, ${fill.opacity || 1})`;
+        }
     }
     return 'transparent';
 }
 
+
+
+
 function convertAlignmentToFigma(alignment: string): string {
-    const alignmentMap = {
+    const alignmentMap: { [key: string]: string } = {
         'MIN': 'flex-start',
         'CENTER': 'center',
         'MAX': 'flex-end',
@@ -132,7 +145,6 @@ function convertAlignmentToFigma(alignment: string): string {
     };
     return alignmentMap[alignment] || 'initial';
 }
-
 
 function convertStylesToTailwind(style: string): string {
     const rules = style.split(';').filter(Boolean);
@@ -181,7 +193,6 @@ function convertStylesToTailwind(style: string): string {
     return classes.trim();
 }
 
-
 function convertColorToTailwind(rgba: string): string {
     const match = rgba.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*(\d*\.?\d+)?\)/);
     if (!match) return '';
@@ -196,7 +207,7 @@ function convertColorToTailwind(rgba: string): string {
 
 // Helper function to convert CSS flex alignment values to Tailwind classes
 function convertFlexAlignment(value: string): string {
-    const map = {
+    const map: { [key: string]: string } = {
         'flex-start': 'start',
         'flex-end': 'end',
         'center': 'center',
